@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+  --- custom fonts ---
+  favorit abc
+    * light
+    * regular
+    * bold
+*/
+
+@layer base {
+  @font-face {
+    font-family: "abc-favorit light";
+    font-style: normal;
+    src: url("./../public/fonts/ABCFavorit-Light.woff2") format("woff2"),
+      url("./../public/fonts/ABCFavorit-Light.woff") format("woff");
+    font-weight: 300;
+  }
+  @font-face {
+    font-family: "abc-favorit regular";
+    font-style: normal;
+    src: url("./../public/fonts/ABCFavorit-Regular.woff2") format("woff2"),
+      url("./../public/fonts/ABCFavorit-Regular.woff") format("woff");
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: "abc-favorit bold";
+    font-style: normal;
+    src: url("./../public/fonts/ABCFavorit-Bold.woff2") format("woff2"),
+      url("./../public/fonts/ABCFavorit-Bold.woff") format("woff");
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: "wulkan light italic";
+    font-style: light;
+    src: url("./../public/fonts/Wulkan-Display-Light-Italic.woff2")
+        format("woff2"),
+      url("./../public/fonts/Wulkan-Display-Light-Italic.woff") format("woff");
+  }
+  @font-face {
+    font-family: "wulkan light";
+    font-style: light;
+    src: url("./../public/fonts/Wulkan-Display-Light.woff2") format("woff2"),
+      url("./../public/fonts/Wulkan-Display-Light.woff") format("woff");
+  }
+  @font-face {
+    font-family: "favorit mono";
+    font-style: normal;
+    src: url("./../public/fonts/ABCFavoritMono-Book.woff2") format("woff2"),
+      url("./../public/fonts/ABCFavoritMono-Book.woff") format("woff");
+  }
+}
+
+/**
+ *  --- underline animation ---
+*/
+
+a {
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s;
+}
+
+a:hover::after {
+  width: 100%;
+}
