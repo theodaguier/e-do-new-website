@@ -20,6 +20,8 @@ export default function CycloramaPage() {
   const [scrollY, setScrollY] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const galleryContainerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -55,21 +57,28 @@ export default function CycloramaPage() {
           }}
         >
           <Suspense fallback={null}>
-            <Model scale={[1.3, 1.3, 1.3]} rotation={[0, scrollY * 0.01, 0]} />
+            <Model scale={[1.3, 1.3, 1.3]} rotation={[0, scrollY * 0.009, 0]} />
             <Environment preset="studio" />
           </Suspense>
         </Canvas>
         <div className="z-50">
-          <CallToAction text="Réserver" overlineColor="blue" />
+          <CallToAction text="Demander un devis" overlineColor="blue" />
         </div>
       </section>
 
       <section className="mt-16 mb-16">
         <Paragraph phrase={phrase} />
       </section>
-      <section className="h-full bg-white">
-        <Gallery />
+      <section className="w=full h-full bg-white" ref={galleryContainerRef}>
+        <Gallery galleryContainerRef={galleryContainerRef} />
         <Equipments />
+      </section>
+      <section className="h-full">
+        <p>
+          Ajoutez tous les services dont vous pourriez avoir besoin au niveau de
+          la production, photographes, chefs de projet, producteurs, stylistes,
+          MUA, assistants de studio, casting et plus encore.
+        </p>
       </section>
     </div>
   );
