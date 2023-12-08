@@ -1,5 +1,5 @@
 "use client";
-import styles from "./page.module.scss";
+
 import { useState, useEffect } from "react";
 import Model from "./model";
 import { Canvas } from "@react-three/fiber";
@@ -10,10 +10,8 @@ import { CallToAction } from "@/app/ui/cta";
 import { Gallery } from "./gallery";
 import { Equipments } from "./equipments";
 
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
-
 import { useRef } from "react";
+import { Paragraph } from "./paragraph";
 
 const phrase =
   "Laissez libre cours à votre imagination grâce à notre cyclorama. Réalisez vos productions, votre set design et toutes vos idées sur notre fond blanc.";
@@ -33,74 +31,6 @@ export default function CycloramaPage() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  let refs = useRef<HTMLSpanElement[]>([]);
-  const body = useRef(null);
-
-  const container = useRef(null);
-
-  const splitWords = (phrase: string) => {
-    let body = [];
-
-    phrase.split(" ").forEach((word, i) => {
-      const letters = splitLetters(word);
-
-      body.push(<p key={word + "_" + i}>{letters}</p>);
-    });
-
-    const splitWords = (phrase: string) => {
-      let body: JSX.Element[] = [];
-
-      phrase.split(" ").forEach((word, i) => {
-        const letters = splitLetters(word);
-
-        body.push(<p key={word + "_" + i}>{letters}</p>);
-      });
-
-      return body;
-    };
-  };
-
-  const splitLetters = (word: string) => {
-    let letters: JSX.Element[] = [];
-
-    word.split("").forEach((letter, i) => {
-      letters.push(
-        <span
-          key={letter + "_" + i}
-          className="font-abc-favorit-regular text-4xl text-blue antialiased"
-          ref={(el) => {
-            if (el) {
-              refs.current.push(el);
-            }
-          }}
-        >
-          {letter}
-        </span>
-      );
-    });
-
-    return letters;
-  };
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    opacityAnimation();
-  }, []);
-
-  const opacityAnimation = () => {
-    gsap.to(refs.current, {
-      scrollTrigger: {
-        trigger: container.current,
-        scrub: true,
-        start: `top`,
-        end: `+=${window.innerHeight / 1.5}`,
-      },
-      opacity: 1,
-      ease: "none",
-      stagger: 0.1,
-    });
-  };
 
   return (
     <div className="container pt-16 h-full" ref={containerRef}>
@@ -135,9 +65,7 @@ export default function CycloramaPage() {
       </section>
 
       <section className="mt-16 mb-16">
-        <div ref={body} className={styles.body}>
-          {splitWords(phrase)}
-        </div>
+        <Paragraph phrase={phrase} />
       </section>
       <section className="h-full bg-white">
         <Gallery />
