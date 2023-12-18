@@ -14,7 +14,7 @@ export const CallToAction = ({ text, overlineColor }: Props) => {
         `hover:bg-${overlineColor}`
       )}
     >
-      <h3 className=" text-sm font-favorit-mono uppercase">{text}</h3>
+      <h3 className="w-[170px] text-sm font-favorit-mono uppercase">{text}</h3>
       <ArrowBody />
     </div>
   );

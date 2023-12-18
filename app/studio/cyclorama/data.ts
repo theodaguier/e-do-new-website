@@ -33,3 +33,23 @@ export const infos = [
     title: "2 portants",
   },
 ];
+
+export const dimensions = [
+  {
+    title: "Longueur: 4m70",
+  },
+  {
+    title: "Largeur: 5m6 x 4m6",
+  },
+  {
+    title: "Recul: 10m",
+  },
+  {
+    title: "Surface: 30m²",
+  },
+];
+
+export const pricing = [
+  { title: "A partir de 800€ HT." },
+  { title: "Electricité 1.60€ / KwH" },
+];

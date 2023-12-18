@@ -1,13 +1,15 @@
-import { infos } from "./data";
-
-export const Equipments = () => {
+export const Equipments = (
+  props: React.PropsWithChildren<{
+    infos: { title: string }[];
+  }>
+) => {
   return (
-    <div className="grid grid-cols-2">
-      {infos.map((info, index) => (
-        <p key={index} className="text-sm antialiased">
+    <ul className="grid grid-cols-1 lg:grid-cols-2 flex-1">
+      {props.infos.map((info, index) => (
+        <li key={index} className="text-md antialiased">
           {info.title}
-        </p>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };

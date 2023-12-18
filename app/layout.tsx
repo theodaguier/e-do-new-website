@@ -19,7 +19,7 @@ export default function RootLayout({
       <body>
         <SmoothScrolling>
           <Providers>
-            <main className="flex flex-col absolute w-full h-full">
+            <main className="flex flex-col absolute w-full">
               <Header />
               {children}
             </main>

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import ArrowBodyInc from "public/assets/icons/arrow-bodyinc.svg";
-
 type Props = {
   textColor?: string;
 };
@@ -15,7 +14,7 @@ export const ArrowBody = ({ textColor }: Props) => {
         alt="arrow"
         className="w-full flex-1 h-[58px]"
         style={{
-          backgroundImage: `url("https://previews.dropbox.com/p/thumb/ACHYAYvYJ4zHkuTBJSqofVFLpw0mxty20dv6HC1K92022G8mH-EVJ0sAmDXwk3tM_zEMxbDHtjg4VnTNrP-Z4sF76abgMLhJ-Kn_dEnvkEQZvrzoKrY9PdPfuvDGYrBe6WVsDfcbcHqG3heOfi1hDu3IZsOY2fDIDzqF_d8uM_9r0bvKqlfgyy5qR8SnMybpX9KYk1Xio9AenoWGS7ihVCHy58QXv6JMCDZNLkiG7EP3crNSIGof-lGZIoweihMi4Xiwi0H7MEkk56OQ9J0V1aCWY8wRsEru1KNQHNin-PTXHEi9oX5oVXmI1GQJis4rQlKLTVWGzWHD9qhFYt6IB4nF/p.png")`,
+          backgroundImage: `url("/assets/icons/arrow-bodyinc.svg")`,
           backgroundPosition: "0%",
           backgroundSize: "auto 100%",
         }}

@@ -50,7 +50,7 @@ export const Header = () => {
             </li>
             <li>
               <a
-                className="hover:bg-green text-sm antialiased font-favorit-mono uppercase hover:text-black"
+                className="hover:bg-orange text-sm antialiased font-favorit-mono uppercase hover:text-black"
                 href="#"
               >
                 post-production

@@ -27,7 +27,7 @@ export const Paragraph = ({ phrase }: { phrase: string }) => {
       letters.push(
         <span
           key={letter + "_" + i}
-          className="font-abc-favorit-regular text-4xl text-blue antialiased"
+          className="font-abc-favorit-regular text-4xl antialiased"
           ref={(el) => {
             if (el) {
               refs.current.push(el);
