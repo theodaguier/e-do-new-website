@@ -21,8 +21,7 @@ export const Gallery = ({
     gsap.fromTo(
       element,
       {
-        y: 50,
-        opacity: 0,
+        y: 100,
       },
       {
         y: 0,
@@ -51,9 +50,9 @@ export const Gallery = ({
           <LazyImage
             src={image.img.src}
             alt={image.alt}
-            width={500}
+            width={1000}
             height={500}
-            placeholderColor="bg-blue"
+            placeholderColor="blue"
           />
         </div>
       ))}
