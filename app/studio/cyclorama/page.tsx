@@ -19,9 +19,6 @@ import { Equipments } from "./equipments";
 import { useRef } from "react";
 import { Paragraph } from "./paragraph";
 
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
-
 export default function CycloramaPage() {
   const [scrollY, setScrollY] = useState<number>(0);
 
@@ -29,7 +26,7 @@ export default function CycloramaPage() {
   const galleryContainerRef = useRef<HTMLDivElement>(null);
   const equipmenentsContainerRef = useRef<HTMLDivElement>(null);
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(-1);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,6 +79,7 @@ export default function CycloramaPage() {
           <Gallery
             galleryContainerRef={galleryContainerRef}
             setIndex={setIndex}
+            index={index}
           />
         </section>
         <section
