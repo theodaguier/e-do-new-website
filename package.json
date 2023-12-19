@@ -22,18 +22,21 @@
     "framer-motion": "^10.16.12",
     "gsap": "^3.12.3",
     "icons": "^1.0.0",
+    "lightbox.js-react": "^0.9.8",
     "next": "14.0.3",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18",
     "react-icons": "^4.12.0",
+    "react-intersection-observer": "^9.5.3",
     "react-modal": "^3.16.1",
     "react-slick": "^0.29.0",
     "sass": "^1.69.5",
     "sass-loader": "^13.3.2",
     "slick-carousel": "^1.8.1",
     "split-text": "^1.0.0",
-    "three": "^0.159.0"
+    "three": "^0.159.0",
+    "yet-another-react-lightbox": "^3.15.6"
   },
   "devDependencies": {
     "@types/curtainsjs": "^8.1.3",

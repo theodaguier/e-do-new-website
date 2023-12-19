@@ -7,7 +7,7 @@ import { Environment } from "@react-three/drei";
 import { Suspense } from "react";
 import { CallToAction } from "@/app/ui/cta";
 
-import { infos, dimensions, pricing } from "./data";
+import { phrase, infos, dimensions, pricing } from "./data";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -19,8 +19,8 @@ import { Equipments } from "./equipments";
 import { useRef } from "react";
 import { Paragraph } from "./paragraph";
 
-const phrase =
-  "Laissez libre cours à votre imagination grâce à notre cyclorama. Réalisez vos productions, votre set design et toutes vos idées sur notre fond blanc.";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 export default function CycloramaPage() {
   const [scrollY, setScrollY] = useState<number>(0);
@@ -28,6 +28,8 @@ export default function CycloramaPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const galleryContainerRef = useRef<HTMLDivElement>(null);
   const equipmenentsContainerRef = useRef<HTMLDivElement>(null);
+
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,48 +74,53 @@ export default function CycloramaPage() {
           <CallToAction text="Demander un devis" overlineColor="blue" />
         </div>
       </section>
-
-      <section className="mt-16 mb-16">
-        <Paragraph phrase={phrase} />
-      </section>
-      <section className="w=full h-full bg-white" ref={galleryContainerRef}>
-        <Gallery galleryContainerRef={galleryContainerRef} />
-      </section>
-      <section
-        className="w=full flex-1 flex flex-col gap-8 bg-white"
-        ref={equipmenentsContainerRef}
-      >
-        <div className="flex flex-1">
-          <h2 className="flex-1 text-grey-light">Equipements</h2>
-          <Equipments infos={infos} />
-        </div>
-        <div className="flex flex-1">
-          <h2 className="flex-1 text-grey-light">Dimensions</h2>
-          <Equipments infos={dimensions} />
-        </div>
-        <div className="flex flex-1">
-          <h2 className="flex-1 text-grey-light">Tarifs</h2>
-          <Equipments infos={pricing} />
-        </div>
-        <div className="flex flex-1">
-          <span className="flex-1"></span>
-          <p className="flex-1 text-sm">
-            * Ajoutez tous les services dont vous pourriez avoir besoin au
-            niveau de la production, photographes, chefs de projet, producteurs,
-            stylistes, MUA, assistants de studio, casting et plus encore.
+      <div className="bg-white flex flex-col gap-16">
+        <section className="mt-16 mb-16">
+          <Paragraph phrase={phrase} />
+        </section>
+        <section className="w=full h-full bg-white" ref={galleryContainerRef}>
+          <Gallery
+            galleryContainerRef={galleryContainerRef}
+            setIndex={setIndex}
+          />
+        </section>
+        <section
+          className="w=full flex-1 flex flex-col gap-8 bg-white"
+          ref={equipmenentsContainerRef}
+        >
+          <div className="flex flex-1">
+            <h2 className="flex-1 text-grey-light">Equipements</h2>
+            <Equipments infos={infos} />
+          </div>
+          <div className="flex flex-1">
+            <h2 className="flex-1 text-grey-light">Dimensions</h2>
+            <Equipments infos={dimensions} />
+          </div>
+          <div className="flex flex-1">
+            <h2 className="flex-1 text-grey-light">Tarifs</h2>
+            <Equipments infos={pricing} />
+          </div>
+          <div className="flex flex-1">
+            <span className="flex-1"></span>
+            <p className="flex-1 text-xs">
+              * Ajoutez tous les services dont vous pourriez avoir besoin au
+              niveau de la production, photographes, chefs de projet,
+              producteurs, stylistes, MUA, assistants de studio, casting et plus
+              encore.
+            </p>
+          </div>
+        </section>
+        <section className="w=full flex-1 flex flex-col text-center gap-4 bg-white">
+          <h3 className="text-xl">
+            Vous souhaitez plus d&apos;informations sur notre cyclorama ?
+          </h3>
+          <p className="text-md">
+            Téléchargez{" "}
+            <a className="text-grey-dark cursor-pointer">notre plaquette</a> ou{" "}
+            <a className="text-grey-dark cursor-pointer">contactez-nous</a>.
           </p>
-        </div>
-      </section>
-      <section className="w=full flex-1 flex flex-col text-center gap-4 bg-white">
-        <h3 className="text-xl">
-          Vous souhaitez plus d&apos;informations sur notre cyclorama ?
-        </h3>
-        <p className="text-md">
-          Téléchargez{" "}
-          <a className="text-grey-dark cursor-pointer">notre plaquette</a> ou{" "}
-          <a className="text-grey-dark cursor-pointer">contactez-nous</a>.
-        </p>
-      </section>
+        </section>
+      </div>
       <section className="h-[115vh]"></section>
       <section>
         <CallToAction text="Demander un devis" overlineColor="blue" />
