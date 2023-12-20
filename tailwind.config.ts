@@ -1,53 +1,6 @@
 import type { Config } from "tailwindcss";
 const { nextui } = require("@nextui-org/react");
 
-/*
-
-@layer base {
-  @font-face {
-    font-family: "abc-favorit light";
-    font-style: normal;
-    src: url("./../public/fonts/ABCFavorit-Light.woff2") format("woff2"),
-      url("./../public/fonts/ABCFavorit-Light.woff") format("woff");
-    font-weight: 300;
-  }
-  @font-face {
-    font-family: "abc-favorit regular";
-    font-style: normal;
-    src: url("./../public/fonts/ABCFavorit-Regular.woff2") format("woff2"),
-      url("./../public/fonts/ABCFavorit-Regular.woff") format("woff");
-    font-weight: 400;
-  }
-  @font-face {
-    font-family: "abc-favorit bold";
-    font-style: normal;
-    src: url("./../public/fonts/ABCFavorit-Bold.woff2") format("woff2"),
-      url("./../public/fonts/ABCFavorit-Bold.woff") format("woff");
-    font-weight: 700;
-  }
- @font-face {
-    font-family: "Wulkan Light Italic";
-    font-style: light;
-    src: url("./../public/fonts/Wulkan-Display-Light-Italic.woff2")
-        format("woff2"),
-      url("./../public/fonts/Wulkan-Display-Light-Italic.woff") format("woff");
-  }
-  @font-face {
-    font-family: "Wulkan Light";
-    font-style: light;
-    src: url("./../public/fonts/Wulkan-Display-Light.woff2") format("woff2"),
-      url("./../public/fonts/Wulkan-Display-Light.woff") format("woff");
-  }
-    @font-face {
-    font-family: "favorit mono";
-    font-style: normal;
-    src: url("./../public/fonts/ABCFavoritMono-Book.woff2") format("woff2"),
-      url("./../public/fonts/ABCFavoritMono-Book.woff") format("woff");
-  }
-}
-
-*/
-
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
