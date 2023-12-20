@@ -43,7 +43,7 @@ export const Header = () => {
             <li>
               <a
                 className="hover:bg-pink text-sm antialiased font-favorit-mono uppercase hover:text-white"
-                href="#"
+                href="/production"
               >
                 production
               </a>

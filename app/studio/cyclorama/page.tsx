@@ -41,7 +41,7 @@ export default function CycloramaPage() {
   }, []);
 
   return (
-    <div className="container h-full flex flex-col gap-16  " ref={containerRef}>
+    <div className="container h-full flex flex-col gap-16" ref={containerRef}>
       <section className="h-screen flex flex-col justify-between py-4">
         <div className="flex gap-8 items-baseline pt-16">
           <h1 className="text-6xl text-blue font-abc-favorit-regular">

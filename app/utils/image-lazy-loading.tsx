@@ -11,7 +11,6 @@ interface LazyImageProps {
   width: number | string | undefined | any;
   height: number | string | undefined | any;
   placeholderColor: string;
-  onClick?: () => void;
   pointer?: boolean;
   quality?: number;
 }
@@ -42,7 +41,8 @@ export default function LazyImage({
     <div
       ref={ref}
       className={clsx(
-        `bg-${placeholderColor} w-full`,
+        `bg-${placeholderColor}`,
+        "w-full",
         "relative",
         "w-full",
         "h-full",
@@ -58,7 +58,6 @@ export default function LazyImage({
         height={height}
         priority={true}
         quality={quality}
-        layout="responsive"
         style={{
           opacity: inView ? 1 : 0,
           transition: "opacity 0.5s ease-in-out",

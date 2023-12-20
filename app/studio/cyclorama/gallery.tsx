@@ -3,18 +3,10 @@ import { gsap } from "gsap";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import LazyImage from "@/app/utils/image-lazy-loading";
-
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-
-// import optional lightbox plugins
-import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
-import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
-import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
-import styles from "yet-another-react-lightbox/styles.css";
-import { div } from "three/examples/jsm/nodes/Nodes.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,7 +42,7 @@ export const Gallery = ({
   }, [galleryContainerRef]);
 
   return (
-    <div className="w-full grid grid-cols-2 gap-2">
+    <div className="w-full grid md:grid-cols-2 gap-2">
       {images.map((image, i) => (
         <div
           key={i}
@@ -66,9 +58,6 @@ export const Gallery = ({
             height={500}
             pointer={true}
             placeholderColor="blue"
-            onClick={() => {
-              setIndex(i);
-            }}
           />
         </div>
       ))}
