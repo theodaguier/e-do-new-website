@@ -2,7 +2,7 @@ import { images } from "./data";
 import { gsap } from "gsap";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import LazyImage from "@/app/utils/image-lazy-loading";
+import { LazyImage } from "@/app/utils/image-lazy-loading";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";

@@ -99,13 +99,13 @@ export function LazyImageWithCaption(
   }, [inView, isImageLoaded]);
 
   return (
-    <div>
+    <>
       <div
         ref={ref}
         className={clsx(
           `bg-${props.placeholderColor}`,
           "transition-all duration-300",
-          isHovered && `text-orange` // Changez la couleur du texte en orange lorsque l'image est survolée
+          isHovered && `text-orange bg`
         )}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -143,6 +143,6 @@ export function LazyImageWithCaption(
           {props.year}
         </h3>
       </div>
-    </div>
+    </>
   );
 }

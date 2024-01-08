@@ -9,7 +9,6 @@ import { CallToAction } from "@/app/ui/cta";
 
 import { phrase, infos, dimensions, pricing } from "./data";
 
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
