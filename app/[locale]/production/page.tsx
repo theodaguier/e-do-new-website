@@ -1,9 +1,8 @@
 "use client";
 
 import { Gallery } from "./gallery";
-import Image from "next/image";
 
-const ProductionPage = () => {
+export default function ProductionPage() {
   return (
     <div className="container h-full flex flex-col gap-16">
       <section className=" flex flex-col justify-between py-4 bg-white">
@@ -23,6 +22,4 @@ const ProductionPage = () => {
       </section>
     </div>
   );
-};
-
-export default ProductionPage;
+}

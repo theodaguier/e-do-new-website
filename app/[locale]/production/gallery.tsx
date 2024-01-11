@@ -1,4 +1,4 @@
-import { LazyImageWithCaption } from "../utils/image-lazy-loading";
+import { LazyImageWithCaption } from "../../utils/image-lazy-loading";
 import { images } from "./data";
 import { useState } from "react";
 import { useRouter } from "next/navigation";

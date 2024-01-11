@@ -1,5 +1,5 @@
 import { LazyImage } from "@/app/utils/image-lazy-loading";
-import { images } from "./../data";
+import { images } from "../data";
 import Image from "next/image";
 
 export function Gallery() {

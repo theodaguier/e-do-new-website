@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "@/app/ui/layout/header";
 import Providers from "./providers";
 import SmoothScrolling from "./components/smooth-scrolling";
-import Cookies from "./ui/cookies";
+import { Provider } from "@/components/provider";
 
 export const metadata: Metadata = {
   title: "E-Do Studio | Welcome !",
@@ -20,13 +19,9 @@ export default function RootLayout({
       <body>
         <SmoothScrolling>
           <Providers>
-            <main className="flex flex-col absolute w-full">
-              <Header />
-              {children}
-            </main>
+            <Provider>{children}</Provider>
           </Providers>
         </SmoothScrolling>
-        <Cookies />
       </body>
     </html>
   );

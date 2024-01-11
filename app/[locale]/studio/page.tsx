@@ -1,4 +1,4 @@
-import { MachineCard } from "../ui/card";
+import { MachineCard } from "../../ui/card";
 
 export default function StudioPage() {
   return (
