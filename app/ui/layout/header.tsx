@@ -35,7 +35,7 @@ export const Header = () => {
             <li>
               <a
                 className="hover:bg-blue text-sm antialiased font-favorit-mono uppercase hover:text-white"
-                href="#"
+                href="/studio"
               >
                 studio
               </a>

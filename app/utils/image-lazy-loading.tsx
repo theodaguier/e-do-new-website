@@ -13,6 +13,8 @@ interface LazyImageProps {
   placeholderColor: string;
   pointer?: boolean;
   quality?: number;
+  style?: any;
+  className?: string;
 }
 
 interface LazyImageWithCaptionProps {
@@ -71,7 +73,7 @@ export function LazyImage({
         height={height}
         priority={true}
         quality={quality}
-        layout="responsive"
+        layout="full"
         style={{
           opacity: inView ? 1 : 0,
           transition: "opacity 0.5s ease-in-out",
@@ -105,13 +107,12 @@ export function LazyImageWithCaption(
         className={clsx(
           `bg-${props.placeholderColor}`,
           "transition-all duration-300",
-          isHovered && `text-orange bg`
+          isHovered && `text-pink bg`
         )}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <Image
-          className="w-full h-full object-cover"
           src={props.src}
           alt={props.alt}
           width={props.width}

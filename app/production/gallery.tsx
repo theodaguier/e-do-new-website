@@ -22,7 +22,7 @@ export function Gallery() {
             hovered={true}
             width={1000}
             height={1000}
-            placeholderColor="orange"
+            placeholderColor="pink"
             title="test"
             year="2023"
           />

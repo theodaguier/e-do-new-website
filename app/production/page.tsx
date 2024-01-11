@@ -8,7 +8,7 @@ const ProductionPage = () => {
     <div className="container h-full flex flex-col gap-16">
       <section className=" flex flex-col justify-between py-4 bg-white">
         <div className="flex flex-col gap-8 items-baseline pt-16">
-          <h1 className="text-6xl text-orange font-abc-favorit-regular">
+          <h1 className="text-6xl text-pink font-abc-favorit-regular">
             Production /
           </h1>
           {/* <p className="text-4xl text-center font-abc-favorit-regular antialiased leading-snug">
