@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import CompleteLogo from "@/public/complete-complete.png";
 import Image from "next/image";
 import { Button } from "@nextui-org/react";
@@ -18,12 +19,14 @@ export const Header = () => {
               Menu
             </h3>
           </div>
-          <Image
-            className="w-24 h-auto object-cover cursor-pointer"
-            width={1000}
-            src={CompleteLogo}
-            alt="e-do studio complete logo"
-          />
+          <Link href="/">
+            <Image
+              className="w-24 h-auto object-cover cursor-pointer"
+              width={1000}
+              src={CompleteLogo}
+              alt="e-do studio complete logo"
+            />
+          </Link>
           <ul
             className={clsx(
               "hidden md:flex flex-col md:flex-row items-center gap-4",
@@ -33,44 +36,44 @@ export const Header = () => {
             )}
           >
             <li>
-              <a
+              <Link
                 className="hover:bg-blue text-sm antialiased font-favorit-mono uppercase hover:text-white"
                 href="/studio"
               >
                 studio
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="hover:bg-pink text-sm antialiased font-favorit-mono uppercase hover:text-white"
                 href="/production"
               >
                 production
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="hover:bg-orange text-sm antialiased font-favorit-mono uppercase hover:text-black"
                 href="#"
               >
                 post-production
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="hover:bg-black text-sm antialiased font-favorit-mono uppercase hover:text-white"
                 href="#"
               >
                 about
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="hover:bg-black text-sm antialiased font-favorit-mono uppercase hover:text-white"
                 href="#"
               >
                 contact
-              </a>
+              </Link>
             </li>
             <li>
               <Button className="bg-black text-white mt-4 sm:mt-0" size="sm">

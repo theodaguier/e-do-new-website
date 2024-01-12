@@ -119,7 +119,7 @@
  *  --- underline animation ---
 */
 
-a {
+/* a {
   position: relative;
   overflow: hidden;
   text-decoration: none;
@@ -139,4 +139,4 @@ a::after {
 
 a:hover::after {
   width: 100%;
-}
+} */

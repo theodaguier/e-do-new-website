@@ -15,3 +15,39 @@ model User {
   email        String @unique
   passwordHash String
 }
+
+model Question {
+  id        String   @id @default(uuid())
+  question  String
+  answer    String
+  category  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model QuestionCategory {
+  id        String   @id @default(uuid())
+  category  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductionProject {
+  id        String   @id @default(uuid())
+  client    String
+  role      String
+  description String
+  year      Int
+  images    Image[]  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Image {
+  id        String   @id @default(uuid())
+  url       String
+  alt       String
+  projectId String  
+  project   ProductionProject @relation(fields: [projectId], references: [id])
+  createdAt DateTime @default(now())
+}

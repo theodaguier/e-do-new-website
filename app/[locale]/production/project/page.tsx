@@ -5,7 +5,7 @@ export default function ProductionProjectPage() {
   return (
     <div className="flex flex-col">
       <div className="container">
-        <h1 className="text-6xl text-black mix-blend- font-abc-favorit-regular z-50 fixed top-20">
+        <h1 className="text-6xl text-white mix-blend-exclusion font-abc-favorit-regular z-50 fixed top-20">
           Arielle Baron
         </h1>
         <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-full">

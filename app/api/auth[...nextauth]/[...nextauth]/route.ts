@@ -1,4 +1,4 @@
-import prisma from "@/app/libs/prisma";
+import prisma from "@/lib/db";
 import { Account, AuthOptions, Profile, Session, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";

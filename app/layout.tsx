@@ -3,6 +3,7 @@ import "./globals.css";
 import Providers from "./providers";
 import SmoothScrolling from "./components/smooth-scrolling";
 import { Provider } from "@/components/provider";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "E-Do Studio | Welcome !",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <SmoothScrolling>
           <Providers>
             <Provider>{children}</Provider>
+            <Toaster position="top-right" richColors />
           </Providers>
         </SmoothScrolling>
       </body>
