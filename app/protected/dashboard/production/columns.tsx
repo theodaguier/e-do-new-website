@@ -1,5 +1,5 @@
 "use client";
-
+import { create } from "zustand";
 import Image from "next/image";
 import { toast } from "sonner";
 import { ColumnDef } from "@tanstack/react-table";
@@ -28,6 +28,18 @@ export type ProductionTableType = {
   createdAt: string;
   updatedAt: string;
 };
+
+type ModaleState = {
+  isOpen: boolean;
+  id: string;
+  setOpen: (open: boolean) => void;
+};
+
+export const useModale = create<ModaleState>((set) => ({
+  isOpen: false,
+  id: "",
+  setOpen: (open) => set(() => ({ isOpen: open })),
+}));
 
 export const columns: ColumnDef<ProductionTableType>[] = [
   {
@@ -90,13 +102,15 @@ export const columns: ColumnDef<ProductionTableType>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(project.id)}
-            >
-              Copy project ID
-            </DropdownMenuItem>
+
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => {
+                useModale.setState({ isOpen: true, id: project.id });
+              }}
+            >
+              Edit
+            </DropdownMenuItem>
             <DropdownMenuItem
               className="text-red-500"
               onClick={async () => {

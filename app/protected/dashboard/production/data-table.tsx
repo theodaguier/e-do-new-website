@@ -1,13 +1,17 @@
 "use client";
+import React from "react";
 
-import { useState } from "react";
+import { toast } from "sonner";
+import { updateProductionSchema } from "@/lib/validations/production-project";
+import {
+  getProductionProjectByIdAction,
+  updateProductionProjectAction,
+} from "./_action";
+import AutoForm, { AutoFormSubmit } from "@/components/auto-form";
+import { useState, useEffect, useCallback, memo } from "react";
 import cn from "classnames";
 
-// import { useMediaQuery } from "@/hooks/use-media-query";
-
-import { Button } from "@/components/ui/button";
-
-import { useRouter } from "next/navigation";
+import { useModale } from "./columns";
 
 import {
   Dialog,
@@ -15,7 +19,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import {
   Drawer,
@@ -27,8 +30,6 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 import {
   ColumnDef,
@@ -61,8 +62,6 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
   });
 
-  const router = useRouter();
-
   return (
     <div className="rounded-md border">
       <Table>
@@ -91,12 +90,6 @@ export function DataTable<TData, TValue>({
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
                 className="cursor-pointer"
-                onClick={() => {
-                  router.push(
-                    // @ts-ignore
-                    `/protected/dashboard/production/${row.original.id}`
-                  );
-                }}
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
@@ -118,64 +111,124 @@ export function DataTable<TData, TValue>({
   );
 }
 
-// export function DrawerDialog() {
-//   const [open, setOpen] = useState(false);
-//   // const isDesktop = useMediaQuery("(min-width: 768px)");
+export function DrawerDialog() {
+  const { isOpen, setOpen } = useModale() as {
+    isOpen: boolean;
+    id: string;
+    setOpen: (open: boolean) => void;
+  };
 
-//   // if (isDesktop) {
-//   return (
-//     <Dialog open={open} onOpenChange={setOpen}>
-//       <DialogTrigger asChild>
-//         <Button variant="outline">Edit Profile</Button>
-//       </DialogTrigger>
-//       <DialogContent className="sm:max-w-[425px]">
-//         <DialogHeader>
-//           <DialogTitle>Edit profile</DialogTitle>
-//           <DialogDescription>
-//             Make changes to your profile here. Click save when you're done.
-//           </DialogDescription>
-//         </DialogHeader>
-//         <ProfileForm />
-//       </DialogContent>
-//     </Dialog>
-//   );
-//   // }
+  // useEffect(() => {
+  //   setOpen(isOpen);
+  // }, [isOpen]);
 
-//   return (
-//     <Drawer open={open} onOpenChange={setOpen}>
-//       <DrawerTrigger asChild>
-//         <Button variant="outline">Edit Profile</Button>
-//       </DrawerTrigger>
-//       <DrawerContent>
-//         <DrawerHeader className="text-left">
-//           <DrawerTitle>Edit profile</DrawerTitle>
-//           <DrawerDescription>
-//             Make changes to your profile here. Click save when you're done.
-//           </DrawerDescription>
-//         </DrawerHeader>
-//         <ProfileForm className="px-4" />
-//         <DrawerFooter className="pt-2">
-//           <DrawerClose asChild>
-//             <Button variant="outline">Cancel</Button>
-//           </DrawerClose>
-//         </DrawerFooter>
-//       </DrawerContent>
-//     </Drawer>
-//   );
-// }
+  return (
+    <Dialog open={isOpen} onOpenChange={setOpen}>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Edit project</DialogTitle>
+          <DialogDescription>Make changes on this project.</DialogDescription>
+        </DialogHeader>
+        <ProjecteForm />
+      </DialogContent>
+    </Dialog>
+  );
+}
 
-// function ProfileForm({ className }: React.ComponentProps<"form">) {
-//   return (
-//     <form className={cn("grid items-start gap-4", className)}>
-//       <div className="grid gap-2">
-//         <Label htmlFor="email">Email</Label>
-//         <Input type="email" id="email" defaultValue="shadcn@example.com" />
-//       </div>
-//       <div className="grid gap-2">
-//         <Label htmlFor="username">Username</Label>
-//         <Input id="username" defaultValue="@shadcn" />
-//       </div>
-//       <Button type="submit">Save changes</Button>
-//     </form>
-//   );
-// }
+type Data = {
+  productionProject: {
+    client: string;
+    role: string;
+    year: string;
+    description: string;
+  };
+  images: {
+    src: string;
+    alt: string;
+  };
+};
+
+function ProjecteForm({ className }: React.ComponentProps<"form">) {
+  const { id, setOpen } = useModale() as {
+    id: string;
+    isOpen: boolean;
+    setOpen(state: any): void;
+  };
+
+  const [data, setData] = useState<Data | null>({
+    productionProject: {
+      client: "",
+      role: "",
+      year: "",
+      description: "",
+    },
+    images: {
+      src: "",
+      alt: "",
+    },
+  });
+
+  const fetchData = useCallback(async () => {
+    const result = await getProductionProjectByIdAction(id);
+    setData(result.productionProject as any);
+  }, [id]);
+
+  useEffect(() => {
+    if (id) {
+      fetchData();
+    }
+  }, [id, fetchData]);
+
+  const updateProductionProject = useCallback(
+    async (values: Data) => {
+      const result = await updateProductionProjectAction(id, values);
+      console.log(result);
+      setOpen((state: { isOpen: boolean }) => ({
+        ...state,
+        isOpen: false,
+        id: "",
+      }));
+      toast.success("Project updated successfully.");
+    },
+    [id, setOpen]
+  );
+
+  return (
+    <AutoForm
+      formSchema={updateProductionSchema}
+      onSubmit={updateProductionProject as any}
+      className={cn("space-y-4", className)}
+      fieldConfig={{
+        client: {
+          inputProps: {
+            defaultValue: data?.productionProject.client,
+          },
+        },
+        role: {
+          inputProps: {
+            defaultValue: data?.productionProject.role,
+          },
+        },
+        year: {
+          inputProps: {
+            defaultValue: data?.productionProject.year,
+          },
+        },
+        description: {
+          inputProps: {
+            defaultValue: data?.productionProject.description,
+          },
+        },
+        // images: {
+        //   inputProps: {
+        //     defaultValue: data?.images.src,
+        //   },
+        // },
+      }}
+    >
+      <AutoFormSubmit>Save</AutoFormSubmit>
+    </AutoForm>
+  );
+}
+
+export default memo(ProjecteForm);

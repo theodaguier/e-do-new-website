@@ -2,6 +2,7 @@
 
 import {
   getProductionProject,
+  getProductionProjectById,
   createProductionProject,
   updateProductionProject,
   deleteProductionProject,
@@ -11,6 +12,12 @@ import { revalidatePath } from "next/cache";
 
 export const getProductionProjectAction = async () => {
   const productionProject = await getProductionProject();
+  revalidatePath("/dashboard/production");
+  return { productionProject };
+};
+
+export const getProductionProjectByIdAction = async (id: string) => {
+  const productionProject = await getProductionProjectById(id);
   revalidatePath("/dashboard/production");
   return { productionProject };
 };

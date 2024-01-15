@@ -5,6 +5,7 @@ import { DataTable } from "./data-table";
 import { ProductionTableType, columns } from "./columns";
 
 import { Separator } from "@/components/ui/separator";
+import { DrawerDialog } from "./data-table";
 
 export default async function ProductionProjectPage() {
   const data = await prisma.productionProject.findMany({
@@ -45,9 +46,10 @@ export default async function ProductionProjectPage() {
             Existing projects
           </h2>
           <Separator />
-          <DataTable columns={columns} data={data} />
+          <DataTable columns={columns} data={data as any} />
         </div>
       </div>
+      <DrawerDialog />
     </div>
   );
 }
