@@ -1,12 +1,17 @@
 import prisma from "@/lib/db";
 
 import { ProductionProjecForm } from "./form";
-// import { AccordionQuestion } from "./accordion";
+import { DataTable } from "./data-table";
+import { ProductionTableType, columns } from "./columns";
 
 import { Separator } from "@/components/ui/separator";
 
 export default async function ProductionProjectPage() {
-  // const projects = await prisma.productionProject.findMany();
+  const data = await prisma.productionProject.findMany({
+    include: {
+      images: true,
+    },
+  });
 
   return (
     <div className="flex flex-col gap-8 h-full">
@@ -40,7 +45,7 @@ export default async function ProductionProjectPage() {
             Existing projects
           </h2>
           <Separator />
-          {/* <AccordionQuestion questions={questions} /> */}
+          <DataTable columns={columns} data={data} />
         </div>
       </div>
     </div>

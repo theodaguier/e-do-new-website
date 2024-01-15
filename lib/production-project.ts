@@ -91,11 +91,18 @@ export async function updateProductionProject(id: string, data: any) {
 
 export async function deleteProductionProject(id: string) {
   try {
+    const images = await prisma.image.deleteMany({
+      where: {
+        projectId: id, // Supprimez d'abord toutes les images associées
+      },
+    });
+
     const productionProject = await prisma.productionProject.delete({
       where: {
         id,
       },
     });
+
     return productionProject;
   } catch (error) {
     console.log(error);
