@@ -14,7 +14,8 @@ interface LazyImageProps {
   pointer?: boolean;
   quality?: number;
   style?: any;
-  className?: string;
+  className?: string[] | string;
+  isHovered?: boolean | any;
 }
 
 interface LazyImageWithCaptionProps {
@@ -36,8 +37,10 @@ export function LazyImage({
   width,
   height,
   placeholderColor,
+  className,
   pointer = false,
   quality = 100,
+  isHovered,
 }: LazyImageProps) {
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -66,7 +69,11 @@ export function LazyImage({
       )}
     >
       <Image
-        className="w-full h-full object-cover"
+        className={clsx(
+          "w-full h-full object-cover transition-all duration-500",
+          isHovered && "filter blur-sm",
+          ...(className || [])
+        )}
         src={src}
         alt={alt}
         width={width}

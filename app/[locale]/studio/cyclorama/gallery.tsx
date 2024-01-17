@@ -52,7 +52,7 @@ export const Gallery = ({
           }}
         >
           <LazyImage
-            src={image.img.src}
+            src={image.url}
             alt={image.alt}
             width={1000}
             height={500}
@@ -63,7 +63,7 @@ export const Gallery = ({
       ))}
       <Lightbox
         slides={images.map((image) => ({
-          src: image.img.src,
+          src: image.url,
           alt: image.alt,
           width: 800,
           height: 500,

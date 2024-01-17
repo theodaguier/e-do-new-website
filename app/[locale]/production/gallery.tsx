@@ -2,13 +2,20 @@ import { LazyImageWithCaption } from "../../utils/image-lazy-loading";
 import { images } from "./data";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { LayoutGrid } from "@/components/layout-grid";
+import { ParagraphCard } from "@/app/ui/card";
 
 export function Gallery() {
   const [isHovered, setIsHovered] = useState(false);
   const router = useRouter();
 
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <LayoutGrid>
+      <ParagraphCard
+        paragraph="Confiez-nous votre production, on se charge du reste !"
+        paragraph2="Casting, catering, talents, transport, equipements..."
+      />
+
       {images.map((image: any, index: any) => (
         <div
           key={index}
@@ -28,6 +35,6 @@ export function Gallery() {
           />
         </div>
       ))}
-    </div>
+    </LayoutGrid>
   );
 }

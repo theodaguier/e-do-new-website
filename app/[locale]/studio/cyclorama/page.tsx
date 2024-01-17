@@ -9,9 +9,6 @@ import { CallToAction } from "@/app/ui/cta";
 
 import { phrase, infos, dimensions, pricing } from "./data";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 import { Gallery } from "./gallery";
 import { Equipments } from "./equipments";
 
@@ -67,7 +64,11 @@ export default function CycloramaPage() {
           </Suspense>
         </Canvas>
         <div className="z-50">
-          <CallToAction text="Demander un devis" overlineColor="blue" />
+          <CallToAction
+            href="/"
+            text="Demander un devis"
+            overlineColor="blue"
+          />
         </div>
       </section>
       <div className="bg-white flex flex-col gap-16">
@@ -120,7 +121,7 @@ export default function CycloramaPage() {
       </div>
       <section className="h-[115vh]"></section>
       <section>
-        <CallToAction text="Demander un devis" overlineColor="blue" />
+        <CallToAction href="/" text="Demander un devis" overlineColor="blue" />
       </section>
     </div>
   );

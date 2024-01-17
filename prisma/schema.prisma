@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -33,21 +30,73 @@ model QuestionCategory {
 }
 
 model ProductionProject {
-  id        String   @id @default(uuid())
-  client    String
-  role      String
+  id          String   @id @default(uuid())
+  client      String
+  role        String
   description String
-  year      Int
-  images    Image[]  
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  year        Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  images      Image[]
+}
+
+model Vertical {
+  id          String    @id @default(uuid())
+  name        String
+  description String
+  pricings    Pricing[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Horizontal {
+  id          String    @id @default(uuid())
+  name        String
+  description String
+  pricings    Pricing[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Live {
+  id          String    @id @default(uuid())
+  name        String
+  description String
+  pricings    Pricing[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Eclipse {
+  id          String    @id @default(uuid())
+  name        String
+  description String
+  pricings    Pricing[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Pricing {
+  id           String      @id @default(uuid())
+  title        String
+  price        Int
+  eclipseId    String?
+  eclipse      Eclipse?    @relation(fields: [eclipseId], references: [id])
+  liveId       String?
+  live         Live?       @relation(fields: [liveId], references: [id])
+  verticalId   String?
+  vertical     Vertical?   @relation(fields: [verticalId], references: [id])
+  horizontalId String?
+  horizontal   Horizontal? @relation(fields: [horizontalId], references: [id])
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
 }
 
 model Image {
-  id        String   @id @default(uuid())
+  id        String            @id @default(uuid())
   url       String
+  projectId String
+  createdAt DateTime          @default(now())
   alt       String
-  projectId String  
   project   ProductionProject @relation(fields: [projectId], references: [id])
-  createdAt DateTime @default(now())
 }

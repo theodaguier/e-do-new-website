@@ -40,7 +40,14 @@ export async function getProductionProjectById(id: string) {
         id,
       },
     });
-    return productionProject;
+
+    const images = await prisma.image.findMany({
+      where: {
+        projectId: id,
+      },
+    });
+
+    return { productionProject, images };
   } catch (error) {
     console.log(error);
   }
@@ -77,25 +84,44 @@ export async function createProductionProject(data: any) {
 
 export async function updateProductionProject(id: string, data: any) {
   try {
+    const { images, ...projectData } = data;
+
     const productionProject = await prisma.productionProject.update({
-      where: {
-        id,
-      },
-      data,
+      where: { id },
+      data: projectData,
     });
-    return productionProject;
+
+    // Créer les nouvelles images
+    const createdImages = await Promise.all(
+      images.map((image: any) =>
+        prisma.image.create({
+          data: {
+            ...image,
+            projectId: productionProject.id,
+          },
+        })
+      )
+    );
+
+    return { productionProject, images: createdImages };
   } catch (error) {
     console.log(error);
   }
 }
-
 export async function deleteProductionProject(id: string) {
   try {
+    const images = await prisma.image.deleteMany({
+      where: {
+        projectId: id, // Supprimez d'abord toutes les images associées
+      },
+    });
+
     const productionProject = await prisma.productionProject.delete({
       where: {
         id,
       },
     });
+
     return productionProject;
   } catch (error) {
     console.log(error);
