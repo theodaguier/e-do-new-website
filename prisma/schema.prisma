@@ -40,6 +40,58 @@ model ProductionProject {
   images      Image[]
 }
 
+model Vertical {
+  id          String    @id @default(uuid())
+  name        String
+  description String
+  pricings    Pricing[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Horizontal {
+  id          String    @id @default(uuid())
+  name        String
+  description String
+  pricings    Pricing[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Live {
+  id          String    @id @default(uuid())
+  name        String
+  description String
+  pricings    Pricing[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Eclipse {
+  id          String    @id @default(uuid())
+  name        String
+  description String
+  pricings    Pricing[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Pricing {
+  id           String      @id @default(uuid())
+  title        String
+  price        Int
+  eclipseId    String?
+  eclipse      Eclipse?    @relation(fields: [eclipseId], references: [id])
+  liveId       String?
+  live         Live?       @relation(fields: [liveId], references: [id])
+  verticalId   String?
+  vertical     Vertical?   @relation(fields: [verticalId], references: [id])
+  horizontalId String?
+  horizontal   Horizontal? @relation(fields: [horizontalId], references: [id])
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
 model Image {
   id        String            @id @default(uuid())
   url       String

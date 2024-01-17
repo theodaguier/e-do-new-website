@@ -79,6 +79,7 @@
     src: url("./../public/fonts/ABCFavorit-Light.woff2") format("woff2"),
       url("./../public/fonts/ABCFavorit-Light.woff") format("woff");
     font-weight: 300;
+    letter-spacing: -0.32rem;
   }
   @font-face {
     font-family: "abc-favorit regular";
@@ -86,6 +87,7 @@
     src: url("./../public/fonts/ABCFavorit-Regular.woff2") format("woff2"),
       url("./../public/fonts/ABCFavorit-Regular.woff") format("woff");
     font-weight: 400;
+    letter-spacing: -0.32rem;
   }
   @font-face {
     font-family: "abc-favorit bold";
@@ -93,6 +95,7 @@
     src: url("./../public/fonts/ABCFavorit-Bold.woff2") format("woff2"),
       url("./../public/fonts/ABCFavorit-Bold.woff") format("woff");
     font-weight: 700;
+    letter-spacing: -0.32rem;
   }
   @font-face {
     font-family: "wulkan light italic";
@@ -100,43 +103,54 @@
     src: url("./../public/fonts/Wulkan-Display-Light-Italic.woff2")
         format("woff2"),
       url("./../public/fonts/Wulkan-Display-Light-Italic.woff") format("woff");
+    letter-spacing: -0.32rem;
   }
   @font-face {
     font-family: "wulkan light";
     font-style: light;
     src: url("./../public/fonts/Wulkan-Display-Light.woff2") format("woff2"),
       url("./../public/fonts/Wulkan-Display-Light.woff") format("woff");
+    letter-spacing: -0.32rem;
   }
   @font-face {
     font-family: "favorit mono";
     font-style: normal;
     src: url("./../public/fonts/ABCFavoritMono-Book.woff2") format("woff2"),
       url("./../public/fonts/ABCFavoritMono-Book.woff") format("woff");
+    letter-spacing: -0.32rem;
   }
 }
 
+/* h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.004rem;
+} */
+
 /**
- *  --- underline animation ---
+  * 2024 CSS RESET
 */
 
-/* a {
+* {
+  box-sizing: border-box;
   position: relative;
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
+  min-width: 0;
 }
 
-a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: currentColor;
-  transition: width 0.3s;
+body {
+  min-height: 100dvh;
 }
 
-a:hover::after {
-  width: 100%;
-} */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+  letter-spacing: -0.04rem;
+}
+
+p {
+  text-wrap: pretty;
+  letter-spacing: -0.04rem;
+}

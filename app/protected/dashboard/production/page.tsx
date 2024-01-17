@@ -6,6 +6,7 @@ import { ProductionTableType, columns } from "./columns";
 
 import { Separator } from "@/components/ui/separator";
 import { DrawerDialog } from "./data-table";
+import { LayoutDashboardGrid } from "@/components/layout-grid";
 
 export default async function ProductionProjectPage() {
   const data = await prisma.productionProject.findMany({
@@ -15,7 +16,7 @@ export default async function ProductionProjectPage() {
   });
 
   return (
-    <div className="flex flex-col gap-8 h-full">
+    <LayoutDashboardGrid>
       <h1 className="antialiased font-abc-favorit-bold text-4xl">Production</h1>
 
       <div className="flex flex-col gap-8">
@@ -50,6 +51,6 @@ export default async function ProductionProjectPage() {
         </div>
       </div>
       <DrawerDialog />
-    </div>
+    </LayoutDashboardGrid>
   );
 }

@@ -9,7 +9,7 @@ export default function ProductionProjectPage() {
           Arielle Baron
         </h1>
         <div className="grid md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-full">
-          <div className="flex grid flex-col gap-8 overflow-y-scroll w-full pt-44 bg-white">
+          <div className=" grid flex-col gap-8 overflow-y-scroll w-full pt-44 bg-white">
             <Gallery />
           </div>
           <div className="grid gap-4 md:gap-10 items-start sticky top-0 pt-44">

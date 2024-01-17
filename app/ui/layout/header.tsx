@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Button } from "@nextui-org/react";
 import { useState } from "react";
 import clsx from "clsx";
+import { Globe } from "lucide-react";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState<Boolean>(false);
@@ -54,7 +55,7 @@ export const Header = () => {
             <li>
               <Link
                 className="hover:bg-orange text-sm antialiased font-favorit-mono uppercase hover:text-black"
-                href="#"
+                href="/post-production"
               >
                 post-production
               </Link>
@@ -76,7 +77,13 @@ export const Header = () => {
               </Link>
             </li>
             <li>
-              <Button className="bg-black text-white mt-4 sm:mt-0" size="sm">
+              <Globe onClick={() => setIsOpen(!isOpen)} />
+            </li>
+            <li>
+              <Button
+                className="bg-black rounded-md text-white text-xs py-1 px-2 font-favorit-mono uppercase mt-4 sm:mt-0"
+                size="sm"
+              >
                 Réserver
               </Button>
             </li>

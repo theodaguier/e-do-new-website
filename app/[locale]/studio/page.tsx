@@ -1,59 +1,68 @@
 import { MachineCard } from "../../ui/card";
+import { LayoutGrid } from "@/components/layout-grid";
+
+import Link from "next/link";
+import { ParagraphCard, TitleCard } from "../../ui/card";
 
 export default function StudioPage() {
   return (
-    <div className="container gap-8 w-full h-full">
-      <h1 className=" font-abc-favorit-regular text-6xl text-blue pt-16">
-        Studio /
-      </h1>
+    <>
+      <TitleCard title="Studio / Services e-com" textColor="blue" />
 
-      <p className="font-abc-favorit-regular antialiased text-2xl py-8 indent-24">
-        Optimisez et rentabilisez la gestion de votre e-commerce. Notre studio
-        photo est équipé de plusieurs machines de prises de vues pour répondre à
-        tous vos besoins.
-      </p>
-
-      <div className="flex flex-col gap-8">
-        <div className="flex gap-8">
+      <LayoutGrid>
+        <ParagraphCard
+          paragraph="Optimisez et rentabilisez la gestion de votre e-commerce dès maintenant."
+          paragraph2="Notre studio photo est équipé de plusieurs machines de prises de vues pour répondre à tous vos besoins."
+          callToAction
+          ctaText="Disponibilités"
+          ctaLink="/"
+        />
+        <Link href="/studio/vertical">
           <MachineCard
-            title="Vertical / Mannequin Invisible"
-            description="Packshot vertical"
-            image="https://images.unsplash.com/photo-1682687981715-fa2ff72bd87d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MzF8fHxlbnwwfHx8fHw%3D"
+            title="Vertical"
+            description="Mannequin Invisible"
+            image="https://dl.dropboxusercontent.com/scl/fi/juo7ixf6rg2txbm2vx6tw/_29A1281-HDR.jpg?rlkey=7tcsj4tqu0yhn3bixikgz06nh&dl=0"
             imageAlt="test"
           />
+        </Link>
 
-          <MachineCard
-            title="Horizontal / Packshot à plat"
-            description="Idéal pour les photos de produits, le packshot à plat"
-            image="https://images.unsplash.com/photo-1682687981715-fa2ff72bd87d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MzF8fHxlbnwwfHx8fHw%3D"
-            imageAlt="test"
-          />
-        </div>
+        <MachineCard
+          title="Horizontal"
+          description="Packshot à plat"
+          image="https://dl.dropboxusercontent.com/scl/fi/4mmguc49p4xb6tymvyed9/_29A1311-HDR.jpg?rlkey=btdzm445rv9jhko3lhr0orlht&dl=0"
+          imageAlt="test"
+        />
 
-        <div className="flex gap-8">
-          <MachineCard
-            title="Eclipse / Accessoires"
-            description="Idéal pour les photos et accessoires"
-            image="https://images.unsplash.com/photo-1682687981715-fa2ff72bd87d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MzF8fHxlbnwwfHx8fHw%3D"
-            imageAlt="test"
-          />
-          <MachineCard
-            title="Live / Porté"
-            description="Photos / vidéos de produits portés"
-            image="https://images.unsplash.com/photo-1682687981715-fa2ff72bd87d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MzF8fHxlbnwwfHx8fHw%3D"
-            imageAlt="test"
-          />
-        </div>
-
-        <div className="flex- 1 md:col-span-1 flex flex-col justify-between gap-4 h-full">
+        <MachineCard
+          title="Eclipse"
+          description="Accessoires / Bijoux / Chaussures"
+          image="https://dl.dropboxusercontent.com/scl/fi/pkdy9h9k99bcs54d0gwjq/_29A1320-HDR.jpg?rlkey=k130vwe73fipg16hnh7ejdmyi&dl=0"
+          imageAlt="test"
+        />
+        <MachineCard
+          title="Live"
+          description="Photo / Vidéo porté."
+          image="https://dl.dropboxusercontent.com/scl/fi/ur9mwlr288cwi052icalb/_29A1304-HDR.jpg?rlkey=jxmi5u0xqskctw0yvs7shspt2&dl=0"
+          imageAlt="test"
+        />
+        <Link href="/studio/cyclorama">
           <MachineCard
             title="Cyclorama"
             description="Production libre"
-            image="https://images.unsplash.com/photo-1682687981715-fa2ff72bd87d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MzF8fHxlbnwwfHx8fHw%3D"
+            image="https:/dl.dropboxusercontent.com/scl/fi/j0wm6a9lfuc5s6i0ykztr/_29A1260-HDR.jpg?rlkey=rwnast8jlusjsyyal3wfh4c4i&dl=0"
             imageAlt="test"
+            colSpan={1}
           />
-        </div>
-      </div>
-    </div>
+        </Link>
+      </LayoutGrid>
+
+      <ParagraphCard
+        paragraph="Vous souhaitez en savoir plus sur nos services ?"
+        paragraph2="Vous pouvez-vous rendre dans notre FAQ ou nous contacter directement."
+        callToAction
+        ctaText="Contact"
+        ctaLink="/"
+      />
+    </>
   );
 }
