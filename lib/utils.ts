@@ -5,6 +5,10 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function firstLetterToUpperCase(input: string | undefined): string {
+  return (input?.charAt(0) ?? "").toUpperCase() + input?.slice(1);
+}
+
 export function formatDate(input: string | number): string {
   const date = new Date(input);
   return date.toLocaleDateString("en-US", {

@@ -11,45 +11,13 @@ import { Paragraph } from "@/components/titles";
 import { CallToAction } from "@/app/ui/cta";
 import { Title } from "@/components/titles";
 
-type MachineCardType = {
-  title: string;
-  description: string;
-  image: string;
-  imageAlt: string;
-  colSpan?: number;
-};
-
-type ParagraphCardType = {
-  paragraph: string;
-  paragraph2?: string;
-  callToAction?: boolean;
-  ctaText?: string | null;
-  ctaLink?: string;
-  colSpan?: number;
-  className?: string;
-};
-
-type RetouchCardType = {
-  title: string;
-  image: string;
-  imageAlt: string;
-  colSpan?: number;
-  isHovered?: boolean;
-};
-
-type PricingCardType = {
-  title: string;
-  hour?: { title: string; price: string }[];
-  withDescription?: boolean;
-  description?: string;
-  colSpan?: number;
-  className?: string;
-};
-
-type TitleCardType = {
-  title: string;
-  textColor?: string;
-};
+import {
+  MachineCardType,
+  ParagraphCardType,
+  PricingCardType,
+  RetouchCardType,
+  TitleCardType,
+} from "@/types/card-types";
 
 export const MachineCard = ({
   title,
@@ -67,9 +35,6 @@ export const MachineCard = ({
         colSpan && `col-span-${colSpan}important`,
         hovered && "shadow-lg"
       )}
-      // style={{
-      //   gridColumn: colSpan !== undefined ? `span-${colSpan}` : "span-1",
-      // }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -110,9 +75,6 @@ export const RetouchCard = ({
         colSpan && `col-span-${colSpan}important`,
         hovered && "shadow-lg"
       )}
-      // style={{
-      //   gridColumn: colSpan !== undefined ? `span-${colSpan}` : "span-1",
-      // }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
@@ -145,15 +107,18 @@ export const PricingCard = ({
   colSpan,
   className,
 }: PricingCardType) => {
+  console.log("hour from pricing", hour);
+
   return (
     <div
       className={clsx(
         "flex flex-col bg-gray-100 rounded-md p-4",
-        colSpan && `col-span-${colSpan} important`
+        colSpan && `col-span-${colSpan} important`,
+        className
       )}
     >
       <div className="flex-1">
-        <Subtitle>{title}</Subtitle>
+        <Subtitle textColor="gray-500">{title}</Subtitle>
       </div>
       <div className="flex-1 flex flex-col justify-between pt-2">
         <div className="">
@@ -161,7 +126,7 @@ export const PricingCard = ({
             hour?.map((item, i) => (
               <div key={i}>
                 <Caption>{item.title}</Caption>
-                <Caption textColor="gray-500">{item.price}</Caption>
+                <Caption textColor="gray-500">{item.price}€ HT</Caption>
               </div>
             ))
           ) : (
@@ -179,22 +144,27 @@ export const PricingCard = ({
 };
 
 export const ParagraphCard = ({
+  titleCard,
+  titleColor,
   paragraph,
   paragraph2,
   callToAction,
   ctaText,
   ctaLink,
   colSpan,
-  ...props
+  className,
 }: ParagraphCardType) => {
   return (
     <div
       className={clsx(
         "flex flex-col justify-between bg-gray-100 rounded-md mb-4 p-4 h-full",
         colSpan && `col-span-${colSpan}!important`,
-        props.className
+        className
       )}
     >
+      <Subtitle className={clsx("pb-4", `text-${titleColor}`)}>
+        {titleCard}
+      </Subtitle>
       <Paragraph className="flex-1">
         {paragraph}
         {paragraph2 && <br />}
