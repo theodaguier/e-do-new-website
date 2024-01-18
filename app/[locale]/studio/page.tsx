@@ -25,13 +25,14 @@ export default function StudioPage() {
             imageAlt="test"
           />
         </Link>
-
-        <MachineCard
-          title="Horizontal"
-          description="Packshot à plat"
-          image="https://dl.dropboxusercontent.com/scl/fi/4mmguc49p4xb6tymvyed9/_29A1311-HDR.jpg?rlkey=btdzm445rv9jhko3lhr0orlht&dl=0"
-          imageAlt="test"
-        />
+        <Link href="/studio/horizontal">
+          <MachineCard
+            title="Horizontal"
+            description="Packshot à plat"
+            image="https://dl.dropboxusercontent.com/scl/fi/4mmguc49p4xb6tymvyed9/_29A1311-HDR.jpg?rlkey=btdzm445rv9jhko3lhr0orlht&dl=0"
+            imageAlt="test"
+          />
+        </Link>
 
         <MachineCard
           title="Eclipse"

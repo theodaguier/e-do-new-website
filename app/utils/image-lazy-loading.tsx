@@ -4,32 +4,10 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import { useInView } from "react-intersection-observer";
-
-interface LazyImageProps {
-  src: string;
-  alt: string | any;
-  width: number | string | undefined | any;
-  height: number | string | undefined | any;
-  placeholderColor: string;
-  pointer?: boolean;
-  quality?: number;
-  style?: any;
-  className?: string[] | string;
-  isHovered?: boolean | any;
-}
-
-interface LazyImageWithCaptionProps {
-  src: string;
-  alt: string | any;
-  width: number | string | undefined | any;
-  height: number | string | undefined | any;
-  placeholderColor: string;
-  pointer?: boolean;
-  hovered?: boolean;
-  quality?: number;
-  title?: string;
-  year?: string;
-}
+import {
+  LazyImageProps,
+  LazyImageWithCaptionProps,
+} from "@/types/lazy-images-types";
 
 export function LazyImage({
   src,
@@ -74,7 +52,7 @@ export function LazyImage({
           isHovered && "filter blur-sm",
           ...(className || [])
         )}
-        src={src}
+        src={src || ""}
         alt={alt}
         width={width}
         height={height}

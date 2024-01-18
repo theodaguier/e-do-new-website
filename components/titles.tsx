@@ -1,25 +1,48 @@
 import clsx from "clsx";
+import exp from "constants";
 
 interface TitleProps {
   className?: string;
   textColor?: string;
+  experimental?: boolean;
   padding?: boolean;
   children: React.ReactNode;
 }
 
-export const Title = (props: TitleProps) => {
+export const Title = ({
+  textColor,
+  className,
+  children,
+  experimental = false,
+}: TitleProps) => {
   return (
     <h1
       className={clsx(
         "font-abc-favorit-regular text-6xl antialiased",
-        props.textColor && `text-${props.textColor}`,
-        props.className
+        experimental &&
+          "text-white mix-blend-exclusion font-abc-favorit-regular z-50 fixed top-20",
+        textColor && `text-${textColor}`,
+        className
       )}
     >
-      {props.children}
+      {children}
     </h1>
   );
 };
+
+// export const MagicTitle = (props: TitleProps) => {
+//   return (
+//     <h1
+//       className={clsx(
+//         "font-abc-favorit-regular text-6xl antialiased text-white mix-blend-exclusion font-abc-favorit-regular z-50 fixed top-20",
+//         props.textColor && `text-${props.textColor}`,
+//         props.className
+//       )}
+//     >
+//       {props.children}
+//     </h1>
+//   );
+// };
 
 export const Paragraph = (props: TitleProps) => {
   return (
